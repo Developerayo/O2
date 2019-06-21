@@ -8,16 +8,15 @@ function go() {
         se = "0" + se
     }
         
-    var e1 = document.getElementById("start").value | 1
-    var e2 = document.getElementById("end").value | e1
+    var e1 = document.getElementById("start").value || "1"
+    var e2 = document.getElementById("end").value || e1
 
 
     var eps = document.getElementById("episodes")
 
     eps.innerHTML = ""
 
-
-    for (let i = e1; i < e2 + 1 ; i++) {
+    for (var i = Number.parseInt(e1); i < Number.parseInt(e2) + 1 ; i++) {
         var d = Math.floor(Math.random() * 10) + 2
         
         var ep = "" + i
