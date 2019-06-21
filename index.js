@@ -1,6 +1,6 @@
 function go() {
 
-    var m = document.getElementById("move").value.replace(" ", "20%")
+    var m = document.getElementById("move").value.replace(" ", "%20")
     var se = document.getElementById("season").value || "1"
 
     if (se.length == 1) {
@@ -10,6 +10,11 @@ function go() {
     var e1 = document.getElementById("start").value || "1"
     var e2 = document.getElementById("end").value || e1
 
+    var o = "TvShows4Mobile.Com" 
+    
+    if (document.getElementById("o2").checked) {
+        o = "O2TvSeries.Com" 
+    }
 
     var eps = document.getElementById("episodes")
 
@@ -23,7 +28,7 @@ function go() {
             ep = "0" + ep;
         }
 
-        var s = "http://d" + d + ".tvshows4mobile.com/" + m + "/Season%20" + se + "/" + m + "%20-%20S" + se + "E" + ep + "%20(TvShows4Mobile.Com).mp4"
+        var s = "http://d" + d + ".tvshows4mobile.com/" + m + "/Season%20" + se + "/" + m + "%20-%20S" + se + "E" + ep + "%20(" + o + ").mp4"
 
         var e = document.createElement("div")
 
