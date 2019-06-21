@@ -1,9 +1,8 @@
 function go() {
 
     var m = document.getElementById("move").value.replace(" ", "20%")
-    var s = document.getElementById("season").value | 1
+    var se = document.getElementById("season").value || "1"
 
-    var se = "" + s
     if (se.length == 1) {
         se = "0" + se
     }
