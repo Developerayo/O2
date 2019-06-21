@@ -21,7 +21,7 @@ function go() {
     eps.innerHTML = ""
 
     for (var i = Number.parseInt(e1); i < Number.parseInt(e2) + 1 ; i++) {
-        var d = Math.floor(Math.random() * 10) + 2
+        var d = document.getElementById("server").value || Math.floor(Math.random() * 10) + 2
         
         var ep = "" + i
         if (ep.length == 1) {
