@@ -1,7 +1,17 @@
 function go() {
 
-    var m = document.getElementById("move").value.replace(" ", "%20")
-    var se = document.getElementById("season").value || "1"
+    var gb = document.getElementById("move").value.replace(/^(\S*.com\/)|^(\/)/, "").split("/")
+
+    var m = gb[0].replace(/(-)|\s+/g, "%20")
+
+    var seas = gb[1]
+    if (seas && seas.search(/Season-\n\n/) != -1) {
+        seas = seas.substr(7, 2)
+    } else {
+        seas = null
+    }
+
+    var se = document.getElementById("season").value || seas || "1"
 
     if (se.length == 1) {
         se = "0" + se
@@ -21,7 +31,7 @@ function go() {
     eps.innerHTML = ""
 
     for (var i = Number.parseInt(e1); i < Number.parseInt(e2) + 1 ; i++) {
-        var d = document.getElementById("server").value || Math.floor(Math.random() * 10) + 2
+        var d = document.getElementById("server").value || Math.floor(Math.random() * 11) + 1
         
         var ep = "" + i
         if (ep.length == 1) {
