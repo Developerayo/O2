@@ -1,0 +1,12 @@
+.center-wrapper {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: all .5s ease-in-out;
+}
+
+.header-wrapper {
+    height: 50px;
+}
