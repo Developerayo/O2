@@ -48,7 +48,7 @@ class Home extends Component {
                 <div className="container">
                     <div className="center-wrapper" style={{ minHeight: '100vh', position: "relative" }}>
 
-                        <form onSubmit={(e)=>{e.preventDefault()}} style={{ width: "100%", maxWidth: "500px", position: "relative", paddingBottom: "70px" }}>
+                        <form onSubmit={(e)=>{e.preventDefault()}} style={{ width: "100%", maxWidth: "500px", position: "relative", paddingBottom: "130px" }}>
                             <div className="" style={{ display: "inline-block", width: "80%" }}>
                                 <input required className="u-full-width" type="text"
                                     placeholder="Enter Movie Name or Url" id="movie" ref="movie"
@@ -60,7 +60,7 @@ class Home extends Component {
                                 </Link>
                             </div>
                         </form>
-                        <div style={{position: "absolute", bottom: "0"}}>
+                        <div style={{position: "absolute", bottom: "60px"}}>
                         <a href="https://github.com/goody-h/O2"> <img src={gitimg} alt="" style={{height: "80px", width: "80px"}}/> </a>
                         </div>
                     </div>

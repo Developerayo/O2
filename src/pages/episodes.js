@@ -126,7 +126,20 @@ class Episodes extends Component {
     render() {
         return (
             <div style={{ backgroundColor: "rgb(51,51,51)", minHeight: '100vh', overflow: "hidden" }}>
-                <div className="center-wrapper" style={{ backgroundColor: "#222", height: '50px' }}>
+
+
+                <div style={{
+                    position: "absolute", right: "-50px", top: "50px", height: "100px", width: "100px",
+                    backgroundColor: "#33C3F0", zIndex: "100", transform: "rotate(-45deg)", transformOrigin: "0 0"
+                }}>
+
+                </div>
+                <a href="https://github.com/goody-h/O2" style={{
+                    position: "absolute", right: "5px", top: "55px", height: "20px", width: "20px",
+                    zIndex: "200"
+                }}> <img src={gitimg} alt="" style={{ height: "20px", width: "20px" }} /> </a>
+
+                <div className="center-wrapper" style={{ backgroundColor: "#222", height: '50px', zIndex: "300", position: "relative" }}>
 
                     <form onSubmit={(e) => { e.preventDefault() }} className="container" style={{ maxWidth: "500px" }}>
                         <div className="" style={{ display: "inline-block", width: "80%" }}>
@@ -142,23 +155,15 @@ class Episodes extends Component {
                     </form>
                 </div>
 
-                <div style={{position: "absolute", right: "-100px", top: "0", height: "200px", width: "200px",
-                 backgroundColor: "#33C3F0", zIndex: "100", transform: "rotate(-45deg)", transformOrigin: "0 0"}}>
-
-                </div>
-                <a href="https://github.com/goody-h/O2" style={{position: "absolute", right: "10px", top: "10px", height: "40px", width: "40px",
-                 zIndex: "200"}}> <img src={gitimg} alt="" style={{height: "40px", width: "40px"}}/> </a>
-
-
                 <div className="container" style={{ marginTop: "20px" }}>
-                    <div className="row" style={{}}>
-                        <div className="four columns" style={{ marginTop: "20px", borderLeft: "5px solid #33C3F0", paddingLeft: "20px" }}>
-                            <span style={{ color: "white", marginRight: "10px" }}>Season:</span>
+                    <div className="row">
+                        <div className="five columns" style={{ marginTop: "20px", borderLeft: "5px solid #33C3F0", paddingLeft: "10px", maxWidth: "170px" }}>
+                            <span style={{ color: "white", marginRight: "5px" }}>Season:</span>
                             <Adder default={this.state.defValue} value={this.state.season}
                                 onChange={(value) => { this.displayEpisodes({ season: value, updates: { season: true } }) }} />
                         </div>
-                        <div className="eight columns" style={{ marginTop: "20px", borderLeft: "5px solid #33C3F0", paddingLeft: "20px" }}>
-                            <span style={{ color: "white", marginRight: "10px" }}>Episode:</span>
+                        <div className="seven columns" style={{ marginTop: "20px", borderLeft: "5px solid #33C3F0", paddingLeft: "10px" }}>
+                            <span style={{ color: "white", marginRight: "5px" }}>Episode:</span>
                             <Adder default={this.state.defValue} value={this.state.from}
                                 onChange={(value) => {
                                     const state = { from: value, defTo: value || 1, updates: { from: true, defTo: true } }
@@ -187,11 +192,13 @@ class Episodes extends Component {
                         <span onClick={this.useAdvanced} style={{ color: "#33C3F0", cursor: "pointer", marginRight: "20px", fontSize: "1.6rem" }}>{this.state.showMore ? "Show less <<" : "Show more >>"}</span>
 
                         <div style={{ padding: "5px 25px", display: `${this.state.showMore ? "inline-block" : "none"}`, border: "1px solid #33C3F0", borderRadius: "10px" }}>
-                            <span style={{ display: "inline-block", textAlign: "right", width: "75px", color: "white", margin: "5px 5px 5px 0" }}>Use O2Tv:</span>
-                            <input type="checkbox" name="useO2" id="useO2" ref="useO2" checked={this.state.useO2}
-                                style={{ margin: "5px 0" }} onChange={() => {
-                                    this.displayEpisodes({ useO2: !this.state.useO2 })
-                                }} />
+                            <div style={{ display: "inline-flex", alignItems: "center"}}>
+                                <span style={{ display: "inline-block", textAlign: "right", width: "75px", color: "white", margin: "5px 5px 5px 0" }}>Use O2Tv:</span>
+                                <input type="checkbox" name="useO2" id="useO2" ref="useO2" checked={this.state.useO2}
+                                    style={{ margin: "5px 0" }} onChange={() => {
+                                        this.displayEpisodes({ useO2: !this.state.useO2 })
+                                    }} />
+                            </div>
 
                             <div style={{ display: "inline-block", margin: "5px 0 5px 25px" }}>
                                 <span style={{ width: "50px", display: "inline-block", textAlign: "right", color: "white", marginRight: "5px" }}>Server:</span>
