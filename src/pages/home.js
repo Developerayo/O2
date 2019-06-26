@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
 import '../assets/css/home.css';
+import gitimg from '../assets/images/gitblue.png'
 
 class Home extends Component {
 
@@ -45,7 +46,7 @@ class Home extends Component {
         return (
             <div style={{ backgroundColor: "#222" }}>
                 <div className="container">
-                    <div className="center-wrapper" style={{ minHeight: '100vh' }}>
+                    <div className="center-wrapper" style={{ minHeight: '100vh', position: "relative" }}>
 
                         <form onSubmit={(e)=>{e.preventDefault()}} style={{ width: "100%", maxWidth: "500px", position: "relative", paddingBottom: "70px" }}>
                             <div className="" style={{ display: "inline-block", width: "80%" }}>
@@ -59,6 +60,9 @@ class Home extends Component {
                                 </Link>
                             </div>
                         </form>
+                        <div style={{position: "absolute", bottom: "0"}}>
+                            <a href="https://github.com/goody-h/O2"> <img src={gitimg} alt="" style={{height: "80px", width: "80px"}}/> </a>
+                        </div>
                     </div>
                 </div>
             </div>
