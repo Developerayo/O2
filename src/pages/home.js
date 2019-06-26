@@ -58,11 +58,11 @@ class Home extends Component {
                             </div>
                         </form>
 
-                        <div style={{ position: "absolute", display: "inline-block", bottom: "60px", paddingRight: "30%", transform: "translateX(-40px)" }}>
+                        <div style={{ position: "absolute", display: "inline-block", bottom: "60px", paddingRight: "40%", transform: "translateX(-40px)" }}>
                             <a href="https://twitter.com/goodhopeordu"> <img src={twitter} alt="" style={{ height: "40px", width: "40px" }} /> </a>
                         </div>
 
-                        <div style={{ position: "absolute", display: "inline-block", bottom: "60px", paddingLeft: "30%", transform: "translateX(40px)" }}>
+                        <div style={{ position: "absolute", display: "inline-block", bottom: "60px", paddingLeft: "40%", transform: "translateX(40px)" }}>
                             <a href="https://www.linkedin.com/in/goodhope-ordu-537722158"> <img src={linkedin} alt="" style={{ height: "40px", width: "40px" }} /> </a>
                         </div>
 
