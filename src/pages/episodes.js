@@ -127,20 +127,17 @@ class Episodes extends Component {
         return (
             <div style={{ backgroundColor: "rgb(51,51,51)", minHeight: '100vh', overflow: "hidden" }}>
 
-
                 <div style={{
                     position: "absolute", right: "-50px", top: "50px", height: "100px", width: "100px",
                     backgroundColor: "#33C3F0", zIndex: "100", transform: "rotate(-45deg)", transformOrigin: "0 0"
-                }}>
+                }}/>
 
-                </div>
                 <a href="https://github.com/goody-h/O2" style={{
                     position: "absolute", right: "5px", top: "55px", height: "20px", width: "20px",
                     zIndex: "200"
                 }}> <img src={gitimg} alt="" style={{ height: "20px", width: "20px" }} /> </a>
 
                 <div className="center-wrapper" style={{ backgroundColor: "#222", height: '50px', zIndex: "300", position: "relative" }}>
-
                     <form onSubmit={(e) => { e.preventDefault() }} className="container" style={{ maxWidth: "500px" }}>
                         <div className="" style={{ display: "inline-block", width: "80%" }}>
                             <input className="u-full-width" type="text"
@@ -192,7 +189,7 @@ class Episodes extends Component {
                         <span onClick={this.useAdvanced} style={{ color: "#33C3F0", cursor: "pointer", marginRight: "20px", fontSize: "1.6rem" }}>{this.state.showMore ? "Show less <<" : "Show more >>"}</span>
 
                         <div style={{ padding: "5px 25px", display: `${this.state.showMore ? "inline-block" : "none"}`, border: "1px solid #33C3F0", borderRadius: "10px" }}>
-                            <div style={{ display: "inline-flex", alignItems: "center"}}>
+                            <div style={{ display: "inline-flex", alignItems: "center" }}>
                                 <span style={{ display: "inline-block", textAlign: "right", width: "75px", color: "white", margin: "5px 5px 5px 0" }}>Use O2Tv:</span>
                                 <input type="checkbox" name="useO2" id="useO2" ref="useO2" checked={this.state.useO2}
                                     style={{ margin: "5px 0" }} onChange={() => {
@@ -209,7 +206,8 @@ class Episodes extends Component {
                             </div>
                         </div>
                     </div>
-                    <div style={{ marginTop: "35px" }}>
+
+                    <div style={{ marginTop: "35px", paddingBottom: "50px" }}>
                         {this.state.episodes.length !== 0 ? <div style={{ position: "relative", backgroundColor: "#33C3F0", height: "2px", marginBottom: "25px" }}>
                             <div className={this.state.rightSpin ? "spin-right" : "spin-left"} style={{
                                 display: "inline-block", position: "absolute",
