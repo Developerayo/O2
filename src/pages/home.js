@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Route, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import '../assets/css/home.css';
 
 class Home extends Component {
@@ -11,6 +11,11 @@ class Home extends Component {
         this.state = {
             link: "/"
         }
+        this.handleSubmit = this.handleSubmit.bind(this);
+    }
+
+    handleSubmit(e) {
+        
     }
 
     checkValue() {
@@ -29,7 +34,7 @@ class Home extends Component {
         } else {
             se = ""
         }
-        var result = "/" + m + `${se != ""? "/" + se : ""}`
+        var result = "/" + m + `${se !== "" ? "/" + se : ""}`
 
         if (result !== "/") {
             this.setState({ link: result, entry: movie })
@@ -39,19 +44,21 @@ class Home extends Component {
     render() {
         return (
             <div style={{ backgroundColor: "#222" }}>
-                <div className="center-wrapper container" style={{ minHeight: '100vh' }}>
+                <div className="container">
+                    <div className="center-wrapper" style={{ minHeight: '100vh' }}>
 
-                    <div className="" style={{ width: "100%", maxWidth: "500px" }}>
-                        <div className="ten columns" style={{ width: "75%" }}>
-                            <input className="u-full-width" type="text"
-                                placeholder="Enter Movie Name or Url" id="movie" ref="movie"
-                                onChange={this.checkValue} />
-                        </div>
-                        <div className="two columns" style={{ width: "23%", marginLeft: "2%" }}>
-                            <Link to={this.state.link} >
-                                <input className="button-primary" type="submit" value="Go" />
-                            </Link>
-                        </div>
+                        <form onSubmit={(e)=>{e.preventDefault()}} style={{ width: "100%", maxWidth: "500px", position: "relative", paddingBottom: "70px" }}>
+                            <div className="" style={{ display: "inline-block", width: "80%" }}>
+                                <input required className="u-full-width" type="text"
+                                    placeholder="Enter Movie Name or Url" id="movie" ref="movie"
+                                    onChange={this.checkValue} style={{margin: "0"}} />
+                            </div>
+                            <div className="" style={{ display: "inline-block", width: "20%"}}>
+                                <Link to={this.state.link} >
+                                    <input className="button-primary" type="submit" value="Go" style={{ width: "97%", textAlign: "center", padding: "0", margin: "0 0 0 3%"}} />
+                                </Link>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

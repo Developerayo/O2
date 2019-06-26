@@ -1,0 +1,27 @@
+.spin-right {
+    animation: logo-spin 1s .2s ease-in-out 1;
+    transform-origin: 50% 50%
+}
+
+.spin-left {
+    animation: logo-spin2 1s .2s ease-in-out 1;
+    transform-origin: 50% 50%
+}
+
+@keyframes logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes logo-spin2 {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(-360deg);
+    }
+}

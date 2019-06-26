@@ -4,6 +4,8 @@ class Adder extends Component {
 
     constructor(props) {
         super(props)
+
+        this.select = false
         
         this.increment = this.increment.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -12,7 +14,7 @@ class Adder extends Component {
     increment(size) {
         const value = (this.props.value || this.props.default) + size
 
-        if (value < 100 && value > this.props.default - 1) {
+        if (value < 100 && value > 0) {
             this.props.onChange(value)
         }
     }
@@ -23,8 +25,22 @@ class Adder extends Component {
 
         if (Number.isInteger(value) && value < 100 && value > this.props.default - 1) {
             this.props.onChange(value)
-        } else if (event.target.value === "") {
+        } else if (Number.isInteger(value) && value < this.props.default && value > 0) {
+            if (this.props.value > 9) {
+                this.props.onChange(null)
+            } else {
+                this.select = true
+                this.props.onChange(value * 10)
+            }
+        } else if (Number.isNaN(value)) {
             this.props.onChange(null)
+        }
+    }
+
+    componentDidUpdate(props) {
+        if (this.select) {
+            this.select = false
+            this.refs.textBox.setSelectionRange(1, 2)
         }
     }
 
@@ -43,7 +59,11 @@ class Adder extends Component {
                     backgroundColor: "#FFFFFF", borderColor: "#FFFFFF", borderRadius: "4px",
                     border: "1px solid", height: "20px", width: "40px", display: "inline-block"
                 }}>
-                    <input className="center-wrapper" onChange={this.handleChange} placeholder={this.props.default} type="text" value={this.props.value != null ? this.props.value : ""} style={{ height: "20px", width: "40px", textAlign: "center" }} />
+                    <input className="center-wrapper" onChange={this.handleChange} 
+                    placeholder={this.props.default} type="text" 
+                    value={this.props.value != null ? this.props.value : ""}
+                    ref="textBox" 
+                    style={{ height: "20px", width: "40px", textAlign: "center" }} />
                 </div>
 
                 <div style={{
