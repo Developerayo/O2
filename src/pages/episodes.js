@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom'
 import '../assets/css/home.css';
 import '../assets/css/episodes.css';
 import Adder from '../conponents/adder';
+import gitimg from '../assets/images/gitwhite.png'
+
 
 
 class Episodes extends Component {
@@ -123,7 +125,7 @@ class Episodes extends Component {
 
     render() {
         return (
-            <div style={{ backgroundColor: "rgb(51,51,51)", minHeight: '100vh' }}>
+            <div style={{ backgroundColor: "rgb(51,51,51)", minHeight: '100vh', overflow: "hidden" }}>
                 <div className="center-wrapper" style={{ backgroundColor: "#222", height: '50px' }}>
 
                     <form onSubmit={(e) => { e.preventDefault() }} className="container" style={{ maxWidth: "500px" }}>
@@ -139,6 +141,14 @@ class Episodes extends Component {
                         </div>
                     </form>
                 </div>
+
+                <div style={{position: "absolute", right: "-100px", top: "0", height: "200px", width: "200px",
+                 backgroundColor: "#33C3F0", zIndex: "100", transform: "rotate(-45deg)", transformOrigin: "0 0"}}>
+
+                </div>
+                <a href="https://github.com/goody-h/O2" style={{position: "absolute", right: "10px", top: "10px", height: "40px", width: "40px",
+                 zIndex: "200"}}> <img src={gitimg} alt="" style={{height: "40px", width: "40px"}}/> </a>
+
 
                 <div className="container" style={{ marginTop: "20px" }}>
                     <div className="row" style={{}}>

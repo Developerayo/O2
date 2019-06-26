@@ -61,7 +61,7 @@ class Home extends Component {
                             </div>
                         </form>
                         <div style={{position: "absolute", bottom: "0"}}>
-                            <a href="https://github.com/goody-h/O2"> <img src={gitimg} alt="" style={{height: "80px", width: "80px"}}/> </a>
+                        <a href="https://github.com/goody-h/O2"> <img src={gitimg} alt="" style={{height: "80px", width: "80px"}}/> </a>
                         </div>
                     </div>
                 </div>

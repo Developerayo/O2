@@ -9,7 +9,7 @@ import Episodes from './pages/episodes';
 class App extends Component {
   render() {
     return (
-      <div style={{position: 'relative', backgroundColor: "rgb(51,51,51)", minHeight: '100vh'}}>
+      <div style={{position: 'relative', backgroundColor: "rgb(51,51,51)", minHeight: '100vh', overflowX: "hidden"}}>
         <BrowserRouter>
           <div>
             <Route exact path="/" component={Home} />
