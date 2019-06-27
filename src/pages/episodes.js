@@ -5,7 +5,28 @@ import '../assets/css/episodes.css';
 import Adder from '../conponents/adder';
 import gitimg from '../assets/images/gitwhite.png'
 
-
+const Error = {
+    nameError: (name) => (
+        <div>
+            <b>{name}</b> is not available on <b>TvShows4Mobile.Com</b>.
+            The movie names are case sensitive, make sure the name is written as it appears on the website
+            (with the correct character case). Example: <b>Agents of SHIELD</b>.
+            visit <a href="https://tvshows4mobile.com" style={{ color: "#33C3F0" }}>tvshows4mobile.com</a> to get correct name.
+        </div>
+    ),
+    seasonError: (name, season) => (
+        <div>
+            <b>{name}</b> has a maximum of <b>{season}</b> season(s) on <b>TvShows4Mobile.Com</b>.
+            visit <a href={`https://tvshows4mobile.com/${name.replace(/\s+/g, "-")}`} style={{ color: "#33C3F0" }}>tvshows4mobile.com</a> to check the last season.
+        </div>
+    ),
+    episodeError: (name, season, episode) => (
+        <div>
+            <b>{name} - Season {season}</b> has a maximum of <b>{episode}</b> episodes(s) on <b>TvShows4Mobile.Com</b>.
+            visit <a href={`https://tvshows4mobile.com/${name.replace(/\s+/g, "-")}/Season-${season < 10 ? "0" + season : season}`} style={{ color: "#33C3F0" }}>tvshows4mobile.com</a> to check the last episode.
+        </div>
+    )
+}
 
 class Episodes extends Component {
 
@@ -23,12 +44,14 @@ class Episodes extends Component {
             defValue: 1,
             showMore: false,
             defServer: null,
-            useO2: false
+            useO2: false,
+            error: null
         }
 
         this.checkValue = this.checkValue.bind(this)
         this.displayEpisodes = this.displayEpisodes.bind(this)
         this.useAdvanced = this.useAdvanced.bind(this)
+        this.onLoadFrame = this.onLoadFrame.bind(this)
 
         this.state.defTo = this.state.from || 1
         this.state.episodes = this.displayEpisodes({}, true)
@@ -41,6 +64,7 @@ class Episodes extends Component {
                 entry: props.name,
                 link: `/${props.name.replace(/\s+/g, "-")}`,
                 season: props.season || this.state.season,
+                error: null
             }
             this.setState({
                 ...state,
@@ -123,6 +147,11 @@ class Episodes extends Component {
         })
     }
 
+    onLoadFrame() {
+        this.frame.innerHTML
+        console.log("loaded")
+    }
+
     render() {
         return (
             <div style={{ backgroundColor: "rgb(51,51,51)", minHeight: '100vh', overflow: "hidden" }}>
@@ -130,7 +159,7 @@ class Episodes extends Component {
                 <div style={{
                     position: "absolute", right: "-50px", top: "50px", height: "100px", width: "100px",
                     backgroundColor: "#33C3F0", zIndex: "100", transform: "rotate(-45deg)", transformOrigin: "0 0"
-                }}/>
+                }} />
 
                 <a href="https://github.com/goody-h/O2" style={{
                     position: "absolute", right: "5px", top: "55px", height: "20px", width: "20px",
@@ -154,7 +183,7 @@ class Episodes extends Component {
 
                 <div className="container" style={{ marginTop: "20px" }}>
                     <div className="row">
-                        <div className="five columns" style={{ marginTop: "20px", borderLeft: "5px solid #33C3F0", paddingLeft: "10px", maxWidth: "170px" }}>
+                        <div className="five columns" style={{ marginTop: "20px", borderLeft: "5px solid #33C3F0", paddingLeft: "10px", maxWidth: "175px" }}>
                             <span style={{ color: "white", marginRight: "5px" }}>Season:</span>
                             <Adder default={this.state.defValue} value={this.state.season}
                                 onChange={(value) => { this.displayEpisodes({ season: value, updates: { season: true } }) }} />
@@ -207,33 +236,49 @@ class Episodes extends Component {
                         </div>
                     </div>
 
-                    <div style={{ marginTop: "35px", paddingBottom: "50px" }}>
-                        {this.state.episodes.length !== 0 ? <div style={{ position: "relative", backgroundColor: "#33C3F0", height: "2px", marginBottom: "25px" }}>
-                            <div className={this.state.rightSpin ? "spin-right" : "spin-left"} style={{
-                                display: "inline-block", position: "absolute",
-                                right: "20px", top: "-30px", cursor: "pointer", height: "24px", width: "24px"
-                            }}
-                                onClick={() => { this.displayEpisodes({}) }}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#33C3F0" d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" /></svg>
+                    {this.state.episodes.length > 0 ?
+                        <div style={{ marginTop: "35px", paddingBottom: "50px" }}>
+                            <div style={{ position: "relative", backgroundColor: "#33C3F0", height: "2px" }}>
+                                <div className={this.state.rightSpin ? "spin-right" : "spin-left"} style={{
+                                    display: "inline-block", position: "absolute",
+                                    right: "20px", top: "-30px", cursor: "pointer", height: "24px", width: "24px"
+                                }}
+                                    onClick={() => {
+                                        //this.frame.src = ""
+                                        //this.frame.src = `http://tvshows4mobile.com/${this.props.name.replace(/\s+/g, "-")}`
+                                        this.displayEpisodes({})
+                                    }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#33C3F0" d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" /></svg>
+                                </div>
+                                <div style={{
+                                    color: "#33C3F0", display: "inline-block", cursor: "pointer", position: "absolute",
+                                    lineHeight: "24px", right: "60px", top: "-30px"
+                                }}>
+                                    need help?
+                                </div>
+                            </div>
+                            {this.state.error ?
+                                <div style={{ backgroundColor: "rgba(248, 14, 72, 0.863)", padding: "10px", color: "white", fontSize: "1.1rem", marginTop: "5px", borderRadius: "10px" }}>
+                                    {this.state.error}
+                                </div> : null}
+                            <div style={{ marginTop: "25px" }}>
+                                {this.state.episodes.map((v, i) => {
+                                    return (
+                                        <div key={i} style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
+                                            <button style={{ width: "30%", padding: "0px", textAlign: "center", margin: "0px" }}>
+                                                <a className="button-primary" href={v} style={{ display: "inline-block", lineHeight: "38px", width: "100%" }}>
+                                                    Episode {i + (this.state.from || this.state.defValue)}
+                                                </a>
+                                            </button>
+
+                                            <div style={{ color: "rgb(131, 131, 131)", padding: "0px 20px", overflow: "hidden", margin: "5px 0px", height: "28px", lineHeight: "28px", display: "inline-block", backgroundColor: "white", width: "70%" }}>
+                                                {v.replace(/(http:\S+[0-9][0-9]\/)/, "").replace(/%20/g, " ")}
+                                            </div>
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div> : null}
-                        {this.state.episodes.map((v, i) => {
-                            return (
-                                <div key={i} style={{ display: "flex", alignItems: "center", marginBottom: "1rem" }}>
-                                    <button style={{ width: "30%", padding: "0px", textAlign: "center", margin: "0px" }}>
-                                        <a className="button-primary" href={v} style={{ display: "inline-block", lineHeight: "38px", width: "100%" }}>
-                                            Episode {i + (this.state.from || this.state.defValue)}
-                                        </a>
-                                    </button>
-
-                                    <div style={{ color: "rgb(131, 131, 131)", padding: "0px 20px", overflow: "hidden", margin: "5px 0px", height: "28px", lineHeight: "28px", display: "inline-block", backgroundColor: "white", width: "70%" }}>
-                                        {v.replace(/(http:\S+[0-9][0-9]\/)/, "").replace(/%20/g, " ")}
-                                    </div>
-                                </div>
-                            );
-                        })}
-                    </div>
-
                 </div>
             </div>
         );
