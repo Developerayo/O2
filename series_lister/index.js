@@ -35,6 +35,6 @@ function getData() {
         }
         series += buffer + '\n]'
         iSeries += iBuffer + '\n]'
-        document.getElementById("result").innerHTML =`export default series = {\nlist: ${series},\nirregulars: ${iSeries}\n}`
+        document.getElementById("result").innerHTML =`const series = {\nlist: ${series},\nirregulars: ${iSeries}\n}`
     }
 }
