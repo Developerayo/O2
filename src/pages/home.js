@@ -65,9 +65,9 @@ class Home extends Component {
                                 </Link>
                             </div>
                             <div style={{color: "#33C3F0", textAlign: "right", marginTop: "5px"}}>
-                                <div  style={{display: "inline-block", cursor: "pointer"}}>
+                                <a href="https://goody-h.github.io/O2#how-to-use"  style={{display: "inline-block", cursor: "pointer"}}>
                                     need help?
-                                </div>
+                                </a>
                             </div>
                         </form>
 
