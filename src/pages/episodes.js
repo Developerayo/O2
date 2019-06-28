@@ -56,9 +56,9 @@ class Episodes extends Component {
     checkValue() {
         var movie = this.refs.movie.value;
 
-        var gb = movie.replace(/^(\s*.com\/)|^(\/)/, "").split("/")
+        var gb = movie.replace(/^(\S*.com\/)|^(\/)/, "").split("/")
 
-        var m = gb[0].replace(/\s+/g, "-")
+        var m = gb[0].replace(/\s+/g, "-").replace(/-\d$/, "")
 
         var se = gb[1]
         if (se && se.search(/Season-[0-9][0-9]/) !== -1) {
