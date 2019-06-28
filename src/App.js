@@ -5,7 +5,7 @@ import './assets/css/skeleton.css';
 import './assets/css/App.css';
 import Home from './pages/home';
 import Episodes from './pages/episodes';
-
+import series from './conponents/series';
 
 class App extends Component {
 
@@ -13,29 +13,9 @@ class App extends Component {
     super(props)
 
     this.state = {
-      list: []
+      list: series
     }
 
-  }
-
-  onLoadMovieList(e) {
-    var p = e.target.getElementsByClassName("data_list")
-
-    var series = []
-
-    if (p.length > 0) {
-        p = p.item(0).getElementsByClassName("data")
-
-        for (let i = 0; i < p.length; i++) {
-            const a = p.item(i).getElementsByTagName("a");
-
-            if (a.length > 0) {
-                var name = a.item(0).innerHTML
-                series.push(name)
-            }
-        }
-        this.setState({list: series})
-    }
   }
 
   render() {
