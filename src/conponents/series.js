@@ -1,4 +1,4 @@
-export default series = {
+const series = {
     list: [
         "12 Monkeys", "13 Reasons Why", "24", "24 Legacy", "3 Percent", "5th Ward", "911", "A Discovery of Witches", "A Million Little Things",
         "A Place to Call Home", "A Series of Unfortunate Events", "A Very English Scandal", "Absentia", "Agents of SHIELD", "All American",
@@ -60,3 +60,5 @@ export default series = {
         "The Blacklist - Redemption", "The X-Files",
     ]
 }
+
+export default series
