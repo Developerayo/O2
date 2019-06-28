@@ -1,0 +1,122 @@
+            .container {
+                max-width: 800px;
+            }
+            
+            a {
+                text-decoration: none
+            }
+            
+            h3 {
+                font-size: 1.8em;
+            }
+            
+            h4 {
+                font-size: 1.4em;
+            }
+            
+            h5 {
+                font-size: 1.3em;
+            }
+            
+            .large {
+                font-size: 1.4em;
+            }
+            
+            .light {}
+            
+            .circle {
+                border-radius: 50%
+            }
+            
+            .center {
+                text-align: center
+            }
+            
+            .center-mobile {
+                text-align: center
+            }
+            
+            .light-grey {
+                color: #000;
+                background-color: #f1f1f1
+            }
+            
+            .light-blue {
+                color: white;
+                background-color: #33C3F0
+            }
+            
+            .section {
+                margin-top: 16px!important;
+                margin-bottom: 16px!important
+            }
+            
+            .hide-small {
+                display: none
+            }
+            
+            @media (min-width: 550px) {
+                .center-mobile {
+                    text-align: left
+                }
+                .hide-small {
+                    display: block
+                }
+            }
+            
+            .round {
+                border-radius: 16px
+            }
+            /* Larger than mobile */
+            
+            @media (min-width: 400px) {}
+            /* Larger than phablet (also point when grid becomes active) */
+            
+            @media (min-width: 550px) {}
+            /* Larger than tablet */
+            
+            @media (min-width: 750px) {}
+            /* Larger than desktop */
+            
+            @media (min-width: 1000px) {}
+            /* Larger than Desktop HD */
+            
+            @media (min-width: 1200px) {}
+            /*TO DO*/
+            /*ambient background on the pages?  something interactive?  gray arae arts festival 2016
+*/
+            /* Global */
+            
+            .container {
+                max-width: 800px;
+            }
+            
+            ul {
+                list-style: none;
+            }
+            
+            a {
+                cursor: pointer;
+            }
+            /*other*/
+            /* Mobile first queries */
+            /* Larger than mobile */
+            
+            @media (min-width: 320px) {}
+            
+            @media (min-width: 400px) {}
+            /* Larger than phablet */
+            
+            @media (min-width: 550px) {}
+            /* Larger than tablet */
+            
+            @media (min-width: 750px) {}
+            /* Larger than desktop */
+            
+            @media (min-width: 1000px) {}
+            /* Larger than Desktop HD */
+            
+            @media (min-width: 1200px) {}
+            /* Larger than phablet */
+            
+            @media (min-width: 750px) {}
