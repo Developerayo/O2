@@ -250,12 +250,12 @@ class Episodes extends Component {
                                     }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#33C3F0" d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8c-.45-.83-.7-1.79-.7-2.8 0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" /></svg>
                                 </div>
-                                <div style={{
+                                <a href="https://goody-h.github.io/O2#how-to-use" style={{
                                     color: "#33C3F0", display: "inline-block", cursor: "pointer", position: "absolute",
                                     lineHeight: "24px", right: "60px", top: "-30px"
                                 }}>
                                     need help?
-                                </div>
+                                </a>
                             </div>
                             {this.state.error ?
                                 <div style={{ backgroundColor: "rgba(248, 14, 72, 0.863)", padding: "10px", color: "white", fontSize: "1.1rem", marginTop: "5px", borderRadius: "10px" }}>
