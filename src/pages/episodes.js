@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
 import '../assets/css/home.css';
 import '../assets/css/episodes.css';
 import Adder from '../conponents/adder';
 import gitimg from '../assets/images/gitwhite.png'
+import MovieForm from '../conponents/movie-form';
 
 const Error = {
     nameError: (name) => (
@@ -77,8 +77,8 @@ class Episodes extends Component {
         }
     }
 
-    checkValue() {
-        var movie = this.refs.movie.value;
+    checkValue(e) {
+        var movie = e.target.value;
 
         var gb = movie.replace(/^(\S*.com\/)|^(\/)/, "").split("/")
 
@@ -167,18 +167,8 @@ class Episodes extends Component {
                 }}> <img src={gitimg} alt="" style={{ height: "20px", width: "20px" }} /> </a>
 
                 <div className="center-wrapper" style={{ backgroundColor: "#222", height: '50px', zIndex: "300", position: "relative" }}>
-                    <form onSubmit={(e) => { e.preventDefault() }} className="container" style={{ maxWidth: "500px" }}>
-                        <div className="" style={{ display: "inline-block", width: "80%" }}>
-                            <input className="u-full-width" type="text"
-                                placeholder="Enter Movie Name or Url" id="movie" ref="movie"
-                                onChange={this.checkValue} value={this.state.entry} style={{ margin: "0" }} />
-                        </div>
-                        <div className="" style={{ display: "inline-block", width: "20%" }}>
-                            <Link to={this.state.link} >
-                                <input className="button-primary" type="submit" value="Go" style={{ width: "97%", textAlign: "center", padding: "0", margin: "0 0 0 3%" }} />
-                            </Link>
-                        </div>
-                    </form>
+                    <MovieForm className="container" checkValue={this.checkValue}
+                        param={{ value: this.state.entry }} link={this.state.link} />
                 </div>
 
                 <div className="container" style={{ marginTop: "20px" }}>
