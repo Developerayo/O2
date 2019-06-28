@@ -5,6 +5,14 @@ import gitimg from '../assets/images/gitblue.png';
 import twitter from '../assets/images/twitter_icon.svg';
 import linkedin from '../assets/images/linkedin_icon.svg';
 
+const hint = (
+    <div>
+        The movie names are case sensitive, make sure the name is written as it appears on <b>TvShows4Mobile.Com</b> or <b>O2TvSeries.Com</b>. 
+        (with the correct character case). Example: <b>Agents of SHIELD</b>.
+        visit <a href="https://tvshows4mobile.com" style={{ color: "#33C3F0" }}>tvshows4mobile.com</a> to get correct name.
+    </div>
+)
+
 class Home extends Component {
 
     constructor(props) {
@@ -55,6 +63,11 @@ class Home extends Component {
                                 <Link to={this.state.link} >
                                     <input className="button-primary" type="submit" value="Go" style={{ width: "97%", textAlign: "center", padding: "0", margin: "0 0 0 3%" }} />
                                 </Link>
+                            </div>
+                            <div style={{color: "#33C3F0", textAlign: "right", marginTop: "5px"}}>
+                                <div  style={{display: "inline-block", cursor: "pointer"}}>
+                                    need help?
+                                </div>
                             </div>
                         </form>
 
